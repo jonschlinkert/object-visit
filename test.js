@@ -1,10 +1,3 @@
-/*!
- * object-visit <https://github.com/jonschlinkert/object-visit>
- *
- * Copyright (c) 2015 .
- * Licensed under the MIT license.
- */
-
 'use strict';
 
 /* deps: mocha */

@@ -36,5 +36,10 @@
     "value",
     "visit",
     "visitor"
-  ]
+  ],
+  "verbiage": {
+    "related": {
+      "list": ["map-visit", "assign-deep", "extend-shallow", "get-value", "set-value", "has-value"]
+    }
+  }
 }

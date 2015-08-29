@@ -1,7 +1,7 @@
 {
   "name": "object-visit",
   "description": "Call the given method on each value in the given object.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/jonschlinkert/object-visit",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/object-visit",
@@ -37,9 +37,12 @@
     "visit",
     "visitor"
   ],
-  "verbiage": {
+  "verb": {
     "related": {
-      "list": ["map-visit", "assign-deep", "extend-shallow", "get-value", "set-value", "has-value"]
+      "list": [
+        "collection-visit",
+        "map-visit"
+      ]
     }
   }
 }

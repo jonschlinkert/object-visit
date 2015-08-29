@@ -23,9 +23,7 @@ module.exports = function visit(thisArg, method, target) {
   }
 
   for (var key in target) {
-    if (target.hasOwnProperty(key)) {
-      thisArg[method](key, target[key]);
-    }
+    thisArg[method](key, target[key]);
   }
   return thisArg;
 };

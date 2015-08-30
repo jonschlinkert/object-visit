@@ -15,13 +15,10 @@ module.exports = function visit(thisArg, method, target) {
   }
 
   if (typeof method !== 'string') {
-    throw new Error('object-visit expects `method` to be a string');
+    throw new Error('object-visit expects `method` name to be a string');
   }
 
-  if (!isObject(target) && typeof thisArg !== 'function') {
-    throw new Error('object-visit expects `target` to be an object.');
-  }
-
+  target = target || {};
   for (var key in target) {
     thisArg[method](key, target[key]);
   }

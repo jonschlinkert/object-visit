@@ -31,6 +31,15 @@ describe('visit', function () {
     ctx.set({d: {e: 'f'}});
     ctx.data.should.eql(obj);
   });
+
+  it('should not fail when target is null:', function () {
+    ctx.set('a', 'a');
+    ctx.set('b', 'b');
+    ctx.set('c', 'c');
+    ctx.set({d: {e: 'f'}});
+    ctx.set(null);
+    ctx.data.should.eql(obj);
+  });
 });
 
 describe('errors', function () {
@@ -44,15 +53,7 @@ describe('errors', function () {
     }).should.throw('object-visit expects `thisArg` to be an object.');
 
     (function () {
-      visit({}, 'foo');
-    }).should.throw('object-visit expects `target` to be an object.');
-
-    (function () {
-      visit({}, 'bar', 'bar');
-    }).should.throw('object-visit expects `target` to be an object.');
-
-    (function () {
       visit({}, {}, {});
-    }).should.throw('object-visit expects `method` to be a string');
+    }).should.throw('object-visit expects `method` name to be a string');
   });
 });

@@ -31,29 +31,29 @@ describe('visit', function () {
     ctx.set({d: {e: 'f'}});
     ctx.data.should.eql(obj);
   });
-
-  it('should not fail when target is null:', function () {
-    ctx.set('a', 'a');
-    ctx.set('b', 'b');
-    ctx.set('c', 'c');
-    ctx.set({d: {e: 'f'}});
-    ctx.set(null);
-    ctx.data.should.eql(obj);
-  });
 });
 
 describe('errors', function () {
   it('should throw an error when invalid args are passed:', function () {
     (function () {
       visit();
-    }).should.throw('object-visit expects `thisArg` to be an object.');
+    }).should.throw('expected "undefined" to be an object');
+
+    (function () {
+      var ctx = {a: 'b'};
+      visit(ctx, 'a', {one: 'two'});
+    }).should.throw('expected "b" to be a function');
+
+    (function () {
+      visit({}, {}, 'foo');
+    }).should.throw('expected "foo" to be an object');
 
     (function () {
       visit('foo', 'bar');
-    }).should.throw('object-visit expects `thisArg` to be an object.');
+    }).should.throw('expected "foo" to be an object');
 
     (function () {
       visit({}, {}, {});
-    }).should.throw('object-visit expects `method` name to be a string');
+    }).should.throw('expected "[object Object]" to be a string');
   });
 });

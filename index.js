@@ -8,7 +8,7 @@
 'use strict';
 
 var isObject = require('isobject');
-var expected - require('expected');
+var expected = require('expected');
 
 module.exports = function visit(thisArg, method, target) {
   if (!isObject(thisArg) && typeof thisArg !== 'function') {
@@ -23,7 +23,6 @@ module.exports = function visit(thisArg, method, target) {
     expected(method).to.be.a('string');
   }
 
-  target = target || {};
   for (var key in target) {
     var fn = thisArg[method];
     if (typeof fn !== 'function') {

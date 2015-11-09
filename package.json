@@ -1,7 +1,7 @@
 {
   "name": "object-visit",
   "description": "Call a specified method on each value in the given object.",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "homepage": "https://github.com/jonschlinkert/object-visit",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/object-visit",
@@ -20,7 +20,6 @@
     "test": "mocha"
   },
   "dependencies": {
-    "expected": "^0.1.0",
     "isobject": "^2.0.0"
   },
   "devDependencies": {

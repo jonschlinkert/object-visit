@@ -18,12 +18,13 @@ module.exports = function visit(thisArg, method, target) {
     throw new Error('object-visit expects `method` name to be a string');
   }
 
+  if (typeof thisArg[method] !== 'function') {
+    return thisArg;
+  }
+
   target = target || {};
   for (var key in target) {
-    var fn = thisArg[method];
-    if (typeof fn === 'function') {
-      fn(key, target[key]);
-    }
+    thisArg[method](key, target[key]);
   }
   return thisArg;
 };

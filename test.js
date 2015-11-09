@@ -37,23 +37,18 @@ describe('errors', function () {
   it('should throw an error when invalid args are passed:', function () {
     (function () {
       visit();
-    }).should.throw('expected "undefined" to be an object');
-
-    (function () {
-      var ctx = {a: 'b'};
-      visit(ctx, 'a', {one: 'two'});
-    }).should.throw('expected "b" to be a function');
+    }).should.throw('object-visit expects `thisArg` to be an object.');
 
     (function () {
       visit({}, {}, 'foo');
-    }).should.throw('expected "foo" to be an object');
+    }).should.throw('object-visit expects `method` name to be a string');
 
     (function () {
       visit('foo', 'bar');
-    }).should.throw('expected "foo" to be an object');
+    }).should.throw('object-visit expects `thisArg` to be an object.');
 
     (function () {
       visit({}, {}, {});
-    }).should.throw('expected "[object Object]" to be a string');
+    }).should.throw('object-visit expects `method` name to be a string');
   });
 });

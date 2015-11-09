@@ -8,27 +8,22 @@
 'use strict';
 
 var isObject = require('isobject');
-var expected = require('expected');
 
 module.exports = function visit(thisArg, method, target) {
   if (!isObject(thisArg) && typeof thisArg !== 'function') {
-    expected(thisArg).to.be.an('object');
-  }
-
-  if (!isObject(target) && typeof target !== 'function') {
-    expected(target).to.be.an('object');
+    throw new Error('object-visit expects `thisArg` to be an object.');
   }
 
   if (typeof method !== 'string') {
-    expected(method).to.be.a('string');
+    throw new Error('object-visit expects `method` name to be a string');
   }
 
+  target = target || {};
   for (var key in target) {
     var fn = thisArg[method];
-    if (typeof fn !== 'function') {
-      expected(fn).to.be.a('function');
+    if (typeof fn === 'function') {
+      fn(key, target[key]);
     }
-    fn(key, target[key]);
   }
   return thisArg;
 };

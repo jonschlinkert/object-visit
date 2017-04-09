@@ -1,8 +1,7 @@
 'use strict';
 
-/* deps: mocha */
+require('mocha');
 var assert = require('assert');
-var should = require('should');
 var visit = require('./');
 
 var obj = {
@@ -14,41 +13,61 @@ var obj = {
 
 var ctx = {
   data: {},
-  set: function (key, value) {
+  cwd: null,
+  set: function(key, value) {
     if (typeof key === 'object') {
-      visit(ctx, 'set', key);
+      if (value && value.cwd) {
+        this.cwd = value.cwd;
+      }
+      visit(ctx, 'set', key, value);
     } else {
       ctx.data[key] = value;
     }
   }
 };
 
-describe('visit', function () {
-  it('should call visit on every value in the given object:', function () {
-    ctx.set('a', 'a');
-    ctx.set('b', 'b');
-    ctx.set('c', 'c');
-    ctx.set({d: {e: 'f'}});
-    ctx.data.should.eql(obj);
+describe('object-visit', function() {
+  describe('visit', function() {
+    beforeEach(function() {
+      ctx.data = {};
+    });
+
+    it('should call visit on every value in the given object:', function() {
+      ctx.set('a', 'a');
+      ctx.set('b', 'b');
+      ctx.set('c', 'c');
+      ctx.set({d: {e: 'f'}});
+      assert.deepEqual(ctx.data, obj);
+    });
+
+    it('should expose additional arguments to the method', function() {
+      ctx.set('a', 'a');
+      ctx.set('b', 'b');
+      ctx.set('c', 'c');
+      ctx.set({d: {e: 'f'}}, {cwd: process.cwd()});
+
+      assert.equal(ctx.cwd, process.cwd());
+      assert.deepEqual(ctx.data, obj);
+    });
   });
-});
 
-describe('errors', function () {
-  it('should throw an error when invalid args are passed:', function () {
-    (function () {
-      visit();
-    }).should.throw('object-visit expects `thisArg` to be an object.');
+  describe('errors', function() {
+    it('should throw an error when invalid args are passed:', function() {
+      assert.throws(function() {
+        visit();
+      }, /thisArg/);
 
-    (function () {
-      visit({}, {}, 'foo');
-    }).should.throw('object-visit expects `method` name to be a string');
+      assert.throws(function() {
+        visit({}, {}, 'foo');
+      }, /method/);
 
-    (function () {
-      visit('foo', 'bar');
-    }).should.throw('object-visit expects `thisArg` to be an object.');
+      assert.throws(function() {
+        visit('foo', 'bar');
+      }, /thisArg/);
 
-    (function () {
-      visit({}, {}, {});
-    }).should.throw('object-visit expects `method` name to be a string');
+      assert.throws(function() {
+        visit({}, {}, {});
+      }, /method/);
+    });
   });
 });

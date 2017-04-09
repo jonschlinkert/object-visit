@@ -20,15 +20,15 @@
     "test": "mocha"
   },
   "dependencies": {
-    "isobject": "^2.0.0"
+    "isobject": "^3.0.0"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-eslint": "^1.0.0",
-    "gulp-istanbul": "^0.10.1",
-    "gulp-mocha": "^2.1.3",
-    "mocha": "*",
-    "should": "*"
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-format-md": "^0.1.12",
+    "gulp-istanbul": "^1.1.1",
+    "gulp-mocha": "^3.0.0",
+    "mocha": "^3.2.0"
   },
   "keywords": [
     "context",
@@ -44,11 +44,22 @@
   "verb": {
     "related": {
       "list": [
+        "base-methods",
         "collection-visit",
-        "map-visit",
         "define-property",
-        "base-methods"
+        "map-visit"
       ]
+    },
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "lint": {
+      "reflinks": true
     }
   }
 }

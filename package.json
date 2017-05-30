@@ -1,7 +1,7 @@
 {
   "name": "object-visit",
   "description": "Call a specified method on each value in the given object.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/jonschlinkert/object-visit",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/object-visit",

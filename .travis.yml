@@ -1,3 +1,6 @@
+arch:
+    - amd64
+    - ppc64le
 sudo: false
 os:
   - linux
@@ -14,3 +17,10 @@ node_js:
 matrix:
   allow_failures: []
   fast_finish: true
+#Excluding below versions since they are not supported by ppc64le    
+jobs: 
+  exclude:
+    - node_js: "0.10"
+      arch: ppc64le
+    - node_js: "0.12"
+      arch: ppc64le

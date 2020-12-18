@@ -12,15 +12,8 @@ node_js:
   - '6'
   - '5'
   - '4'
-  - '0.12'
-  - '0.10'
+
 matrix:
   allow_failures: []
   fast_finish: true
-#Excluding below versions since they are not supported by ppc64le    
-jobs: 
-  exclude:
-    - node_js: "0.10"
-      arch: ppc64le
-    - node_js: "0.12"
-      arch: ppc64le
+

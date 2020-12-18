@@ -1,3 +1,6 @@
+arch:
+    - amd64
+    - ppc64le
 sudo: false
 os:
   - linux
@@ -9,8 +12,8 @@ node_js:
   - '6'
   - '5'
   - '4'
-  - '0.12'
-  - '0.10'
+
 matrix:
   allow_failures: []
   fast_finish: true
+

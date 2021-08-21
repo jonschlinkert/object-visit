@@ -1,7 +1,7 @@
 {
   "name": "object-visit",
   "description": "Call a specified method on each value in the given object.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://github.com/jonschlinkert/object-visit",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/object-visit",
@@ -14,7 +14,7 @@
   ],
   "main": "index.js",
   "engines": {
-    "node": ">=0.10.0"
+    "node": "^12.20 || >= 14.13"
   },
   "scripts": {
     "test": "nyc mocha"

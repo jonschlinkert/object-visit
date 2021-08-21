@@ -17,6 +17,7 @@
     "node": "^12.20 || >= 14.13"
   },
   "scripts": {
+    "lint": "eslint ./{index,test}.js",
     "test": "nyc mocha"
   },
   "dependencies": {
